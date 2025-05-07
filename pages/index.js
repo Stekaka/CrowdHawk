@@ -37,6 +37,7 @@ export default function Home() {
       })
 
       const data = await response.json()
+      console.log("AI response:", data)
       setResult(data)
       setLoading(false)
     }
