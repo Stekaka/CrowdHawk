@@ -33,7 +33,8 @@ export default async function handler(req, res) {
         },
       }
     );
-
+console.log("Crowd response från Replicate:", JSON.stringify(crowd_response, null, 2));
+    
     const crowd_estimate = crowd_response?.count ?? null;
     const heatmap_url = crowd_response?.heatmap ?? null;
 
