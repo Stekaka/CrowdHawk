@@ -56,7 +56,13 @@ export default function Home() {
 </h1>
 
 
-<input type="file" accept="image/*" onChange={handleImageChange} className={styles.fileInput} />
+<input
+  type="file"
+  accept="image/*"
+  onChange={handleImageChange}
+  className={styles.fileInput}
+/>
+
 
 
       {previewUrl && (
