@@ -1,4 +1,3 @@
-
 import Replicate from "replicate";
 
 const replicate = new Replicate({
@@ -13,7 +12,7 @@ export default async function handler(req, res) {
   const { imageBase64 } = req.body;
 
   try {
-    // Skicka till YOLOv8 (valfritt, fortfarande placeholder om inte aktiverad)
+    // YOLOv8 (valfritt, kan tas bort om du vill)
     const yolo_response = await replicate.run(
       "roboflow/yolov8:6f31d4f2c635f72b9575d6f1a218c65754efb9ff9c81f762c64e6f10348d65e6",
       {
@@ -25,7 +24,7 @@ export default async function handler(req, res) {
       }
     );
 
-    // Skicka till riktig crowd counting-modell
+    // Crowd Counting (på riktigt!)
     const crowd_response = await replicate.run(
       "zaidalyafeai/crowd-counting:d56d4ed32c7ef2b2de40e7df86aa1e3f9f60d4190c204f39fbd5ddc75862f2d6",
       {
@@ -36,10 +35,12 @@ export default async function handler(req, res) {
     );
 
     const crowd_estimate = crowd_response?.count ?? null;
+    const heatmap_url = crowd_response?.heatmap ?? null;
 
     res.status(200).json({
       yolo_result: yolo_response,
       csrnet_estimate: crowd_estimate,
+      heatmap_url,
       combined_estimate: crowd_estimate ?? "okänt",
     });
   } catch (error) {
