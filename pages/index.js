@@ -62,9 +62,10 @@ export default function Home() {
         <div className={styles['image-preview']}>
           <h3>Förhandsvisning:</h3>
           <Image src={previewUrl} alt="Uploaded Image" width={600} height={400} />
-          <button onClick={handleAnalyze}>
-            Analysera bild
-          </button>
+        <button onClick={handleAnalyze} className={styles.analyzeButton}>
+  Analysera bild
+</button>
+
         </div>
       )}
 
