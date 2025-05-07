@@ -1,6 +1,7 @@
-
-export async function compressImage(file, maxWidth = 800, quality = 0.7) {
+export async function compressImage(file, maxWidth = 1024, quality = 0.8) {
   return new Promise((resolve, reject) => {
+    if (typeof window === 'undefined') return reject('Window not defined (SSR)')
+
     const reader = new FileReader()
 
     reader.onload = (event) => {
