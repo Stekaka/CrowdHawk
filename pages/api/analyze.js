@@ -25,14 +25,15 @@ export default async function handler(req, res) {
     );
 
     // Crowd Counting (på riktigt!)
-    const crowd_response = await replicate.run(
-      "zaidalyafeai/crowd-counting:d56d4ed32c7ef2b2de40e7df86aa1e3f9f60d4190c204f39fbd5ddc75862f2d6",
-      {
-        input: {
-          image: imageBase64,
-        },
-      }
-    );
+  const crowd_response = await replicate.run(
+  "cjwbw/crowd-counting:6d582c610a261c64c71f3f23b38d1677eb1609781bbdb74017db4f0ec68b10d5",
+  {
+    input: {
+      image: imageBase64,
+    },
+  }
+);
+
 console.log("Crowd response från Replicate:", JSON.stringify(crowd_response, null, 2));
     
     const crowd_estimate = crowd_response?.count ?? null;
