@@ -1,4 +1,3 @@
-
 import Head from 'next/head'
 import Image from 'next/image'
 import { useState } from 'react'
@@ -51,28 +50,35 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-     <h1 className={styles.title}>
-  Crowd<span>Hawk</span>
-</h1>
+      <h1 className={styles.title}>
+        Crowd<span>Hawk</span>
+      </h1>
 
-
-<input
-  type="file"
-  accept="image/*"
-  onChange={handleImageChange}
-  className={styles.fileInput}
-/>
-
-
+      <input
+        type="file"
+        accept="image/*"
+        onChange={handleImageChange}
+        className={styles.fileInput}
+      />
 
       {previewUrl && (
         <div className={styles['image-preview']}>
           <h3>Förhandsvisning:</h3>
-          <Image src={previewUrl} alt="Uploaded Image" width={600} height={400} />
-        <button onClick={handleAnalyze} className={styles.analyzeButton}>
-  Analysera bild
-</button>
-
+          <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+            <Image src={previewUrl} alt="Uploaded" width={400} height={300} />
+            {result?.heatmap_url && (
+              <img
+                src={result.heatmap_url}
+                alt="Heatmap"
+                width={400}
+                height={300}
+                style={{ borderRadius: '8px', border: '1px solid #ccc' }}
+              />
+            )}
+          </div>
+          <button onClick={handleAnalyze} className={styles.analyzeButton}>
+            Analysera bild
+          </button>
         </div>
       )}
 
@@ -81,9 +87,9 @@ export default function Home() {
       {result && (
         <div className={styles.result}>
           <h3>Resultat:</h3>
-          <p><strong>YOLOv8:</strong> {result.yolo_result?.prediction?.length || 'okänt'} personer</p>
-          <p><strong>CSRNet (simulerat):</strong> {result.csrnet_estimate} personer</p>
-          <p><strong>Slutlig uppskattning:</strong> {result.combined_estimate} personer</p>
+          <p><strong>YOLOv8:</strong> {result.yolo_result?.prediction?.length ?? 'okänt'} personer</p>
+          <p><strong>AI-count (CSRNet):</strong> {result.csrnet_estimate ?? 'okänt'} personer</p>
+          <p><strong>Slutlig uppskattning:</strong> {result.combined_estimate ?? 'okänt'} personer</p>
         </div>
       )}
     </div>
