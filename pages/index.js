@@ -51,9 +51,10 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <h1>
-        Crowd<span>Hawk</span>
-      </h1>
+     <h1 className={styles.title}>
+  Crowd<span>Hawk</span>
+</h1>
+
 
       <input type="file" accept="image/*" onChange={handleImageChange} />
 
