@@ -2,7 +2,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import { useState } from 'react'
-import { compressImage } from '../components/compressImage'
+import { compressImage } from '../components/compressImage.js'
 
 export default function Home() {
   const [image, setImage] = useState(null)
