@@ -15,7 +15,7 @@
   color: #1f2937;
 }
 
-button {
+.analyzeButton {
   margin-top: 1rem;
   padding: 0.5rem 1.2rem;
   background-color: #1f2937;
@@ -26,9 +26,10 @@ button {
   font-size: 1rem;
 }
 
-button:hover {
+.analyzeButton:hover {
   background-color: #111827;
 }
+
 
 input[type="file"] {
   margin-top: 1rem;
