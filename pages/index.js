@@ -56,7 +56,8 @@ export default function Home() {
 </h1>
 
 
-      <input type="file" accept="image/*" onChange={handleImageChange} />
+<input type="file" accept="image/*" onChange={handleImageChange} className={styles.fileInput} />
+
 
       {previewUrl && (
         <div className={styles['image-preview']}>
